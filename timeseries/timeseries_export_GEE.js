@@ -18,11 +18,6 @@ Map.centerObject(roi, 9);
 Map.addLayer(ujjain, {color:'blue'}, 'ROI: Ujjain');
 // visualise prediction patch 
 Map.addLayer(prediction_patch_ujjain, {color:'cyan'}, 'prediction Patch: Ujjain');
-
-// // visualise gt points 
-// Map.addLayer(ujjain_crop_gt, {color:'yellow'}, 'GT: Crops Ujjain');
-// // visualise lulc gt points 
-// Map.addLayer(ujjain_lulc_gt, {color:'red'}, 'GT: LULC Ujjain');
 // visualise gt points 
 Map.addLayer(ujjain_crop_gt_inc, {color:'yellow'}, 'GT: Crops Ujjain Increased');
 
@@ -134,16 +129,6 @@ var points = ujjain_crop_gt_inc;
 
 
 
-
-// // We need a unique id for each point. We take the feature id and set it as
-// // a property so we can refer to each point easily
-// var points = points.map(function(feature) {
-//   return ee.Feature(feature.geometry(), {'id': feature.id()});
-// }); 
-
-
-
-
 // 1. functions to extract date and time series values - VV ---------------------------------------
 
 {
@@ -202,18 +187,6 @@ print(tripletsWithDate, 'tripletsWithDate');
 
 
 
-// For a cleaner table, we can also filter out
-// null values, remove duplicates and sort the table
-// before exporting.
-// {
-// var tripletsFiltered = tripletsWithDate
-//   .filter(ee.Filter.neq('VV', -9999))
-//   .distinct(['id', 'date'])
-//   .sort('id');
-// }
-
-// print(tripletsFiltered , 'tripletsFiltered');
-
 
 // Specify the columns that we want to export -VV
 Export.table.toDrive({
@@ -224,9 +197,6 @@ Export.table.toDrive({
     fileNamePrefix: 'VV_timeseries_ujjain_crops3inc',  // change name
     fileFormat: 'CSV',
     selectors: ['id', 'date', 'VV', 'crpname_eg', 'lat', 'lon', 'geometry']
-    // selectors: ['id', 'date', 'VV', 'crop_name', 'latitude', 'longitude', 'geometry']
-    // selectors: ['id', 'date', 'VV', 'LULC_class', 'latitude', 'longitude', 'geometry']
-    // selectors: ['id', 'date', 'VV', 'land_use', 'crop_name', 'crpname_eg', 'latitude', 'longitude', 'geometry']
 });
 
 }
@@ -290,19 +260,6 @@ var tripletsWithDate = triplets.map(function(f) {
 print(tripletsWithDate, 'tripletsWithDate');
 
 
-// We can export this tall table.
-
-// For a cleaner table, we can also filter out
-// null values, remove duplicates and sort the table
-// before exporting.
-// {
-// var tripletsFiltered = tripletsWithDate
-//   .filter(ee.Filter.neq('VV', -9999))
-//   .distinct(['id', 'date'])
-//   .sort('id');
-// }
-
-// print(tripletsFiltered , 'tripletsFiltered');
 
 
 // Specify the columns that we want to export - VH
@@ -314,9 +271,6 @@ Export.table.toDrive({
     fileNamePrefix: 'VH_timeseries_ujjain_crops3inc',  //change name 
     fileFormat: 'CSV',
     selectors: ['id', 'date', 'VH', 'crpname_eg', 'lat', 'lon', 'geometry']
-    // selectors: ['id', 'date', 'VH', 'crop_name', 'latitude', 'longitude', 'geometry']
-    // selectors: ['id', 'date', 'VH', 'LULC_class', 'latitude', 'longitude', 'geometry']
-    // selectors:['id', 'date', 'VH', 'land_use', 'crop_name', 'crpname_eg', 'latitude', 'longitude', 'geometry']
 });
   
 }
@@ -440,8 +394,7 @@ ndvi_16days_size.evaluate(function(size) {
 
 }
 
-// change according to the band ----------------------------------------------------------------
-
+// change according to the band 
 var collection = ndvi_16days; 
 print(collection, 'collection');
 
@@ -507,19 +460,6 @@ print(tripletsWithDate, 'tripletsWithDate');
 
 
 
-// For a cleaner table, we can also filter out
-// null values, remove duplicates and sort the table
-// before exporting.
-// {
-// var tripletsFiltered = tripletsWithDate
-//   .filter(ee.Filter.neq('VV', -9999))
-//   .distinct(['id', 'date'])
-//   .sort('id');
-// }
-
-// print(tripletsFiltered , 'tripletsFiltered');
-
-
 // Specify the columns that we want to export -VV
 Export.table.toDrive({
     collection: tripletsWithDate,
@@ -529,8 +469,6 @@ Export.table.toDrive({
     fileNamePrefix: 'NDVI_timeseries_ujjain_crops3inc',  // change name
     fileFormat: 'CSV',
     selectors: ['id', 'date', 'NDVI', 'crpname_eg', 'lat', 'lon', 'geometry']
-    // selectors: ['id', 'date', 'NDVI', 'land_use', 'crop_name', 'crpname_eg', 'latitude', 'longitude', 'geometry']
-    // selectors: ['id', 'date', 'NDVI', 'LULC_class', 'latitude', 'longitude', 'geometry']
 });
 
 }

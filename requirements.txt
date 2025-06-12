@@ -1,0 +1,9 @@
+numpy 
+pandas
+matplotlib 
+seaborn 
+geopandas
+rasterio
+scikit-learn 
+joblib 
+brf 

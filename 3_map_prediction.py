@@ -1,8 +1,6 @@
 
 import numpy as np
 import rasterio
-#from rasterio.transform import from_origin
-#from rasterio.enums import Resampling
 import matplotlib.pyplot as plt
 import joblib
 
@@ -67,7 +65,7 @@ def crop_map_prediction(input_raster_path, model_path, output_raster_path):
     
  
 input_raster_path = r"D:\Crop\Ujjain\Data\Prediction Patch\S1S2_Ujjain_Rabi_Prediction_stack.tif"
-model_path        = r"D:\Crop\Ujjain\Data\metrics\BRF_crops3inc_multiclass_0.7692.joblib"
+model_path        = r"D:\Crop\Ujjain\Data\metrics\BRF_crops3inc_multiclass.joblib"
 output_raster_path= r"D:\Crop\Ujjain\Data\Prediction Patch\BRF_crops3inc_multiclass_0.7692_Ujjain_map.tif"
 
 crop_map_prediction(input_raster_path= input_raster_path, model_path = model_path,output_raster_path=output_raster_path)

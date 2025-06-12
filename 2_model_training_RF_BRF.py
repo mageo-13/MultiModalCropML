@@ -2,7 +2,7 @@
 """
 Created on Thu Nov 14 11:55:48 2024
 
-@author: iith
+@author: mageo
 """
 
 # libraries
@@ -157,14 +157,12 @@ def evaluation_metrics(labels, y_test, y_pred, save_path, model_type, accuracy):
 
 
 # File paths and parameters
-#input_file_path =r"D:\Crop\Ujjain\Data\timeseries\crops3inc_multiclass_S1S2_onlytimeseries_v01.csv"
 input_file_path =r"D:\Crop\Ujjain\Data\timeseries\timeseries_ujjain_QC\crops3inc_multiclass_S1S2_onlytimeseries_v01_QC.csv"
 
 sample_size = 400 
 test_size = 0.33 
 n_trees = 500  # Number of trees for both classifiers
 
-#save_path= r"D:/Crop/Ujjain/Data/test/"
 
 
 labels = ['Wheat', 'Gram', 'Mustard']
