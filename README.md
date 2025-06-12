@@ -7,8 +7,8 @@ Machine Learning Algorithms like Random Forest and Balanced Random Forest in cas
 
 ## Folder Structure
 - `timeseries/`: GEE JavaScript code to extract timesereies features
--  Preprocessing scripts and classification code
 - `data/`: Sample exported timesereis data 
+-  Preprocessing scripts and classification codes
 
 ## Tools & Technologies
 - Google Earth Engine (optical + SAR)
